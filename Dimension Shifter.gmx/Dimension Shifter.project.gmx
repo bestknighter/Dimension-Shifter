@@ -5,9 +5,27 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound"/>
-  <sprites name="sprites"/>
-  <backgrounds name="background"/>
+  <sprites name="sprites">
+    <sprite>sprites\spr_brick_neutral</sprite>
+    <sprite>sprites\spr_brick_dark</sprite>
+    <sprite>sprites\spr_brick_light</sprite>
+    <sprite>sprites\spr_player</sprite>
+  </sprites>
+  <backgrounds name="background">
+    <background>background\bg_test_neutral</background>
+    <background>background\bg_test_light</background>
+    <background>background\bg_test_dark</background>
+  </backgrounds>
   <paths name="paths"/>
+  <objects name="objects">
+    <object>objects\obj_solid_brick</object>
+    <object>objects\obj_light_brick</object>
+    <object>objects\obj_dark_brick</object>
+    <object>objects\obj_player</object>
+  </objects>
+  <rooms name="rooms">
+    <room>rooms\room_zero</room>
+  </rooms>
   <help>
     <rtf>help.rtf</rtf>
   </help>
