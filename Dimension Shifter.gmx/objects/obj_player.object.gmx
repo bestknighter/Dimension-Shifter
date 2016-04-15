@@ -8,6 +8,99 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Creating vars
+
+hspd = 0;
+vspd = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Movement
+
+var rkey = keyboard_check(ord('D'));
+var lkey = keyboard_check(ord('A'));
+var jkey = keyboard_check(vk_space);
+
+if (place_meeting(x, y+1, obj_solid_brick) || place_meeting(x, y+1, obj_light_brick) || place_meeting(x, y+1, obj_dark_brick)) {
+    vspd = 0;
+    
+    if (jkey) {
+        vspd = -PLR_JMP_SPEED;
+    }
+} else {
+    vspd += GRAVITY_SPEED;
+}
+
+if (rkey) {
+    hspd = PLR_MOV_SPEED;
+}
+
+if (lkey) {
+    hspd = -PLR_MOV_SPEED;
+}
+
+if (!(rkey xor lkey)) {
+    hspd = 0;
+}
+
+if (place_meeting(x+hspd, y, obj_solid_brick) || place_meeting(x+hspd, y, obj_light_brick) || place_meeting(x+hspd, y, obj_dark_brick)) {
+    while (!(place_meeting(x+sign(hspd), y, obj_solid_brick) || place_meeting(x+sign(hspd), y, obj_light_brick) || place_meeting(x+sign(hspd), y, obj_dark_brick))) {
+        x += sign(hspd);
+    }
+    hspd = 0;
+}
+
+x += hspd;
+
+if (place_meeting(x, y+vspd, obj_solid_brick) || place_meeting(x, y+vspd, obj_light_brick) || place_meeting(x, y+vspd, obj_dark_brick)) {
+    while (!(place_meeting(x, y+sign(vspd), obj_solid_brick) || place_meeting(x, y+sign(vspd), obj_light_brick) || place_meeting(x, y+sign(vspd), obj_dark_brick))) {
+        y += sign(vspd);
+    }
+    vspd = 0;
+}
+
+y += vspd;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="9" enumb="1">
       <action>
         <libid>1</libid>
@@ -28,17 +121,17 @@
             <string>///Dimension control
 
 if (keyboard_check_pressed(ord('W'))) {
-    if (global.dimension == "light")
-        global.dimension = "neutral";
+    if (global.dimension == DIMENSION_LIGHT)
+        global.dimension = DIMENSION_NEUTRAL;
     else
-        global.dimension = "light";
+        global.dimension = DIMENSION_LIGHT;
 }
 
 if (keyboard_check_pressed(ord('S'))) {
-    if (global.dimension == "dark")
-        global.dimension = "neutral";
+    if (global.dimension == DIMENSION_DARK)
+        global.dimension = DIMENSION_NEUTRAL;
     else
-        global.dimension = "dark";
+        global.dimension = DIMENSION_DARK;
 }
 </string>
           </argument>
@@ -62,16 +155,16 @@ if (keyboard_check_pressed(ord('S'))) {
             <kind>1</kind>
             <string>///Changing BG
 
-background_visible[0] = global.dimension == "dark";
-background_visible[1] = global.dimension == "neutral";
-background_visible[2] = global.dimension == "light";
+background_visible[0] = global.dimension == DIMENSION_DARK;
+background_visible[1] = global.dimension == DIMENSION_NEUTRAL;
+background_visible[2] = global.dimension == DIMENSION_LIGHT;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
   </events>
-  <PhysicsObject>-1</PhysicsObject>
+  <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>1</PhysicsObjectShape>
   <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
@@ -82,8 +175,5 @@ background_visible[2] = global.dimension == "light";
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints>
-    <point>32,32</point>
-    <point>32,32</point>
-  </PhysicsShapePoints>
+  <PhysicsShapePoints/>
 </object>

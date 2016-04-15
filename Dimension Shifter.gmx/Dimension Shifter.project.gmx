@@ -17,6 +17,7 @@
     <background>background\bg_test_dark</background>
   </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts"/>
   <objects name="objects">
     <object>objects\obj_solid_brick</object>
     <object>objects\obj_light_brick</object>
@@ -26,6 +27,14 @@
   <rooms name="rooms">
     <room>rooms\room_zero</room>
   </rooms>
+  <constants number="6">
+    <constant name="DIMENSION_DARK">0</constant>
+    <constant name="DIMENSION_NEUTRAL">1</constant>
+    <constant name="DIMENSION_LIGHT">2</constant>
+    <constant name="GRAVITY_SPEED">1</constant>
+    <constant name="PLR_MOV_SPEED">15</constant>
+    <constant name="PLR_JMP_SPEED">25</constant>
+  </constants>
   <help>
     <rtf>help.rtf</rtf>
   </help>

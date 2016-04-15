@@ -8,7 +8,34 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="8" enumb="72">
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// LUT 
+
+sprites[DIMENSION_DARK] = spr_brick_dark;
+sprites[DIMENSION_NEUTRAL] = spr_brick_neutral;
+sprites[DIMENSION_LIGHT] = spr_brick_light;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -27,17 +54,7 @@
             <kind>1</kind>
             <string>///Control Sprite to draw on
 
-switch (global.dimension) {
-    case "light":
-        sprite_index = spr_brick_light;
-        break;
-    case "neutral":
-        sprite_index = spr_brick_neutral;
-        break;
-    case "dark":
-        sprite_index = spr_brick_dark;
-        break;
-}
+sprite_index = sprites[global.dimension];
 </string>
           </argument>
         </arguments>
